@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def create_randoms
+    CreateCommentsRandomlyJob.perform_now(params[:amount], @post)
+  end
+
   private
 
   def comment_params

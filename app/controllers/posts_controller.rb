@@ -55,6 +55,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def create_randoms
+    CreatePostsRandomlyJob.perform_now(params[:amount])
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
